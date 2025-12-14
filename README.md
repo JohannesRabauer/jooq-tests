@@ -23,46 +23,37 @@ The application can be packaged using:
 ```
 
 It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+## Database
+erDiagram
+TEACHER ||--o{ SCHOOL_CLASS : teaches
+SCHOOL  ||--o{ SCHOOL_CLASS : contains
+SCHOOL_CLASS ||--o{ STUDENT : has
 
-If you want to build an _über-jar_, execute the following command:
+    TEACHER {
+        bigint id PK
+        varchar name
+        varchar email
+        timestamp created_at
+    }
 
-```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
-```
+    SCHOOL {
+        bigint id PK
+        varchar name
+        timestamp created_at
+    }
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+    SCHOOL_CLASS {
+        bigint id PK
+        varchar name
+        bigint school_id FK
+        bigint teacher_id FK
+        timestamp created_at
+    }
 
-## Creating a native executable
-
-You can create a native executable using:
-
-```shell script
-./mvnw package -Dnative
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
-
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/jooq-first-touch-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
-
-## Related Guides
-
-- Vaadin Flow ([guide](https://vaadin.com/docs/latest/flow/integrations/quarkus)): Vaadin Flow is a unique framework that lets you build web apps without writing HTML or JavaScript
-- JDBC Driver - PostgreSQL ([guide](https://quarkus.io/guides/datasource)): Connect to the PostgreSQL database via JDBC
-
-## Provided Code
-
-### Vaadin Flow example
-
-This is an example application to get started with Vaadin Flow. It generates a simple view interacting with an injected service
-
-[Related guide section...](https://vaadin.com/docs/latest/flow/integrations/quarkus)
-
+    STUDENT {
+        bigint id PK
+        varchar name
+        bigint school_class_id FK
+        timestamp created_at
+    }
