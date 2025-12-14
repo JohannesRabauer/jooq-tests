@@ -25,6 +25,8 @@ The application can be packaged using:
 It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
 
 ## Database
+
+```mermaid
 erDiagram
 TEACHER ||--o{ SCHOOL_CLASS : teaches
 SCHOOL  ||--o{ SCHOOL_CLASS : contains
@@ -57,3 +59,4 @@ SCHOOL_CLASS ||--o{ STUDENT : has
         bigint school_class_id FK
         timestamp created_at
     }
+```
