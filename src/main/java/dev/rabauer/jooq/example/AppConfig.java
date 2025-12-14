@@ -1,4 +1,4 @@
-package dev.rabauer.example;
+package dev.rabauer.jooq.example;
 
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.theme.Theme;

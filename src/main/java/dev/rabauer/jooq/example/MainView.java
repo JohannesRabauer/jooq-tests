@@ -1,4 +1,4 @@
-package dev.rabauer.example;
+package dev.rabauer.jooq.example;
 
 import jakarta.inject.Inject;
 
