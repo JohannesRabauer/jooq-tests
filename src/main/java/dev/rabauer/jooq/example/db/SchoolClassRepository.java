@@ -1,5 +1,6 @@
 package dev.rabauer.jooq.example.db;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import org.jooq.DSLContext;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Map;
 import static dev.rabauer.jooq.example.tables.SchoolClass.SCHOOL_CLASS;
 import static dev.rabauer.jooq.example.tables.Student.STUDENT;
 
+@ApplicationScoped
 public class SchoolClassRepository {
 
     private final DSLContext dsl;
